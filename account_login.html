@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/login_style.css}">
+  <title>ログイン画面</title>
+
+</head>
+
+<body>
+  <html>
+
+  <body>
+    <main>
+      <div class="main">
+        <p class="sign" align="center">ログイン画面</p>
+        <form class="form1" th:action="@{/account/login/process}" method="post">
+          <div>
+            <p align="center">メールアドレス</p>
+            <input class="E-mail" type="text" align="center" placeholder="E-mail" name="accountEmail" id="accountEmail" required>
+          </div>
+          <div>
+            <p align="center">パスワード</p>
+            <input class="Password" type="password" align="center" placeholder="Password" name="password" id="password" required>
+          </div>
+          <div>
+            <button class="login" align="center">ログイン</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+  </body>
+
+  </html>
+</body>
+
+</html>

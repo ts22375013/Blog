@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/list_style.css}">
+	
+	<title>ブログ一覧</title>
+
+</head>
+
+<body>
+    <header>
+        <nav class="header">
+            <div class="header-inner">
+                <ul class="header-list">
+                    <li class="listItem" th:text="${accountName}"></li>
+                    <li class="listItem"><a href="">ブログ記事一覧</a></li>
+                    <li class="listItem"><a href="">お問い合わせ</a></li>
+                    <li class="listItem"><a th:href="@{/account/logout}">ログアウト</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+	<main>
+		<article>
+			<h2 align="center" class="sign">ブログ一覧</h2>
+			<section class="register-item">
+				<div class="all-view-register__button">
+					<a align="center" th:href="@{/blog/register}" class="register">-　ブログ記事登録　-</a>
+				</div>
+			</section>
+			<ul class="products">
+				<li th:each="blog:${blogList}">
+					<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
+						<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="">
+						<p th:text="${blog.blogTitle}"></pth><br>
+						<p th:text="${blog.blogCategoryname}"></p>
+					</a>
+				</li>
+				
+			</ul>
+			
+		</article>
+
+	</main>
+	<footer>
+		<div>
+			<small>&copy; 2024</small>
+		</div>
+	</footer>
+</body>
+
+</html>

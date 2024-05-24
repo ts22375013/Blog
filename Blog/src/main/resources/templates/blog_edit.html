@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/edit_style.css}">
+    <title>ブログ記事更新</title>
+</head>
+
+<body>
+    <header>
+        <nav class="header">
+            <div class="header-inner">
+                <ul class="header-list">
+                    <li class="listItem" th:text="${accountName}"></li>
+                    <li class="listItem"><a th:href="@{/blog/list}">ブログ記事一覧</a></li>
+                    <li class="listItem"><a href="">お問い合わせ</a></li>
+                    <li class="listItem"><a th:href="@{/account/logout}">ログアウト</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="main-inner">
+            <section class="register-section">
+                <h2 align="center" class="sign">ブログ記事更新</h2>
+                <form class="form1" th:action="@{/blog/edit/process}" method="post" enctype="multipart/form-data">
+                    <div class="register-section-details">
+                        <div class="register-section-details_flex">
+                            <div align="center">タイトル</div>
+                            <input class="blog" align="center" type="text" name="blogTitle" th:value="${blog.blogTitle}" id="blogTitle">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div align="center">日付</div>
+                            <input class="blog" align="center" type="text" name="blogDate" th:value="${blog.blogDate}" id="blogDate">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div align="center">カテゴリー</div>
+                            <input class="blog" align="center" type="text" name="blogCategory" th:value="${blog.blogCategoryname}" id="blogCategory">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div align="center">ブログ画像</div>
+                            <input class="blog2" align="center" type="file" name="blogImage">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div align="center">ブログの説明</div>
+                            <textarea  class="blog" align="center" name="blogArticle" placeholder="ブログの説明文" th:test="@{blog.blogArticle}"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="register-section-details_flex">
+						<input type="hidden" name="blogId" th:value="${blog.blogId}">
+                        <button class="register">-　ブログ記事更新　- </button>
+                        <button class="back-btn" onclick="history.back();" type="button">-　　　戻る　　　-</button>
+                    </div>
+                </form>
+                <form th:action="@{/blog/delete}" method="post">
+                    <div class="register-section-details_flex">
+                        <input type="hidden" name="blogId" th:value="${blog.blogId}">
+                        <button class="register1">-　ブログ記事削除　-</button>
+                    </div>
+                </form>
+
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <small>&copy; 2024</small>
+        </div>
+    </footer>
+</body>
+
+</html>
